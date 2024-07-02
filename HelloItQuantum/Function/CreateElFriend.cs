@@ -9,8 +9,7 @@ namespace HelloItQuantum.Function
 {
 	public static class CreateElFriend
 	{
-		private static Uri baseUri = new Uri("avares://HelloItQuantum/");
-		private static Panel CreateEye(double size, Color color)
+        public static Panel CreateEye(double size, Color color)
 		{
 			Panel panel = new Panel();
 			Ellipse eyeball = CreateEllipse(size - 2, color);
@@ -19,7 +18,7 @@ namespace HelloItQuantum.Function
 			panel.Children.Add(eye);
 			return panel;
 		}
-		private static Rectangle CreateRectangle(double size, Color color)
+        public static Rectangle CreateRectangle(double size, Color color)
 		{
 			Rectangle rectangle = new Rectangle();
 			rectangle.Width = size;
@@ -32,7 +31,7 @@ namespace HelloItQuantum.Function
 		public static Image CreateSvgImage(string path, double height, SvgParameters? svgParameters)
 		{
 			SvgImage svgImage = new SvgImage();
-			svgImage.Source = SvgSource.Load(path, baseUri, svgParameters);
+			svgImage.Source = SvgSource.Load(path, new Uri("avares://HelloItQuantum/"), svgParameters);
 			Image convertedImage = new Image
 			{
 				Source = svgImage,
