@@ -4,6 +4,7 @@ using System.IO;
 using System.Media;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Shapes;
 using Avalonia.Media;
 using ExCSS;
 using HelloItQuantum.Function;
@@ -14,11 +15,11 @@ namespace HelloItQuantum.ViewModels
 {
     public class LabyrinthViewModel : MainWindowViewModel
     {
-
+        List<string> listContent = new List<string>();
         bool isVisibleContextWindow = true;
         string textInSP = "Жил-был робот Ракета. Он хотел помочь профессору на станции, но между ними был лабиринт из оранжевых и красных клеток. Ракета мог идти только по оранжевым, избегая красных. Помоги Ракете добраться до станции профессора.";
         string textInBTN = "Далее";
-
+        string pathAudio = $"LabyrinthAudio\\voice_start.wav";
 
         StackPanel listCommandForRobots = new StackPanel();
         public StackPanel ListCommandForRobots { get => listCommandForRobots; set => SetProperty(ref listCommandForRobots, value); }
@@ -26,18 +27,29 @@ namespace HelloItQuantum.ViewModels
         public string TextInSP { get => textInSP; set => SetProperty(ref textInSP, value); }
         public string TextInBTN { get => textInBTN; set => SetProperty(ref textInBTN, value); }
 
-        List<string> listContent = new List<string>();
-
-        public void GoNext() {
-            TextInSP = "Здорово! Ракета оказался на исследовательской станции и помог профессору починить лабораторию. Миссия выполнена!";
+        /// <summary>
+        /// Функция запуска аудио
+        /// </summary>
+        public void PlayTask()
+        {
+            SoundPlayer snd = new SoundPlayer(pathAudio);
+            snd.Play();
+        }
+        public void GoNext()
+        {
             IsVisibleContextWindow = false;
         }
-
+        /// <summary>
+        /// Вернуться в главное меню
+        /// </summary>
         public void GoBack()
         {
             PageSwitch.View = new PlaySectionView();
         }
-
+        /// <summary>
+        /// Добавление списка команд при нажатии на кнопку
+        /// </summary>
+        /// <param name="comand">передаваемая команда (влево, вправо, вниз, вверх)</param>
         public void AddButton(string comand)
         {
 			ListCommandForRobots.HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center;
@@ -54,13 +66,17 @@ namespace HelloItQuantum.ViewModels
 			border.Margin = new Thickness(5);
 			ListCommandForRobots.Children.Add(border);
             listContent.Add(tb.Text);
-
         }
-        
+        /// <summary>
+        /// Очищение списка команд для робота
+        /// </summary>
         public void DeleteCommand() {
             ListCommandForRobots.Children.Clear();
             listContent.Clear();
         }
+        /// <summary>
+        /// Проверка правильности списка команд
+        /// </summary>
         public void CheckCommand()
         {
             //ListCommandForRobots.Children.Clear();
@@ -112,6 +128,7 @@ namespace HelloItQuantum.ViewModels
             if (googCommands)
             {
                 WorkWithFile.UpdateValueGameProgress(2, 100, CurrentUser);
+                pathAudio = $"LabyrinthAudio\\voice_win.wav";
                 TextInSP = "Здорово! Ракета оказался на исследовательской станции и помог профессору починить лабораторию. Миссия выполнена!";
                 IsVisibleContextWindow = true;
                 TextInBTN = "Закрыть";
@@ -119,15 +136,13 @@ namespace HelloItQuantum.ViewModels
             else {
                
                 TextInSP = "К сожалению, Ракета заблудился и не добрался до исследовательской станции. Не отчаивайся! Попробуй заново!";
+                pathAudio = $"LabyrinthAudio\\voice_loss.wav";
                 IsVisibleContextWindow = true;
                 TextInBTN = "Закрыть";
             }
         }
+        
 
-    }
-
-    public class NameComand {
-        public string name { get; set; }
     }
 
 }

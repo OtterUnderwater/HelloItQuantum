@@ -182,14 +182,14 @@
 					<Image Source="/Assets/ImgLabyrinth/Диалоговое_окно.png"  Stretch="Fill" Margin="0,-60,0,0"/>
 					<!--Текст-->
 					<StackPanel>
-						<Button Height="50" Command="" VerticalAlignment="Top" CornerRadius="10000" Padding="1" Margin="50, -230,0,0">
+						<Button Height="50" Command="{Binding LabyrinthVM.PlayTask}" VerticalAlignment="Top" CornerRadius="10000" Padding="1" Margin="50, -230,0,0">
 							<Image Source="/Assets/ImgHotkeys/КнопкаPlay.png"/>
 						</Button>
 						<TextBlock Text="{Binding LabyrinthVM.TextInSP}" TextWrapping="Wrap" Margin="110, -210,15,20" FontSize="22" Foreground="#0534B5"></TextBlock>
 						<Border CornerRadius="20" Background="#00A659" BoxShadow="0 5 #006838" Margin="0 -130 30 0" HorizontalAlignment="Right" Height="40" Width="200"
 								IsVisible="True">
 							<Button Command="{Binding LabyrinthVM.GoNext}" VerticalContentAlignment="Center"
-									 CommandParameter="Нет" CornerRadius="20" Height="40" Width="200">
+									  CornerRadius="20" Height="40" Width="200">
 								<TextBlock Text="{Binding LabyrinthVM.TextInBTN}" TextAlignment="Center" FontSize="24" Foreground="#FFFFFF" />
 							</Button>
 						</Border>
