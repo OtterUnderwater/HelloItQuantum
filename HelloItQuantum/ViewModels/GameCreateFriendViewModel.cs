@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Media;
@@ -99,13 +100,22 @@ namespace HelloItQuantum.ViewModels
 
 		public void PlayTask()
 		{
+			#if DEBUG
+			PlayVoice($"Assets/CreateFrendAudio/voice1.wav");
+			#else
 			PlayVoice($"CreateFrendAudio/voice1.wav");
+			#endif
 		}
 
 		public async Task PlayTwoAudio()
 		{
+			#if DEBUG
+			await PlayVoice($"Assets/CreateFrendAudio/voice2.wav");
+			await PlayVoice($"Assets/CreateFrendAudio/voice3.wav");
+			#else
 			await PlayVoice($"CreateFrendAudio/voice2.wav");
 			await PlayVoice($"CreateFrendAudio/voice3.wav");
+			#endif
 		}
 
 		public async Task PlayVoice(string path)
