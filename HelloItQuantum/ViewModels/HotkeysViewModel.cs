@@ -1,6 +1,8 @@
 ﻿using HelloItQuantum.Function;
 using HelloItQuantum.Views;
+using System;
 using System.Media;
+using System.IO;
 
 namespace HelloItQuantum.ViewModels
 {
@@ -19,7 +21,8 @@ namespace HelloItQuantum.ViewModels
         string textAnswer = ""; //Текст в поле ввода ответа
         (int, string, int) act = (1, "", 1); 
         string textShowAct = "1/5";
-        string path = $"HotkeysAudio\\voice1.wav";
+        string dopPath = "";
+        string path = "";
 
         public bool VisibleBtnNext { get => visibleBtnNext; set => SetProperty(ref visibleBtnNext, value); }
         public string TextInBtnNext { get => textInBtnNext; set => SetProperty(ref textInBtnNext, value); }
@@ -35,33 +38,39 @@ namespace HelloItQuantum.ViewModels
 
         public HotkeysViewModel()
         {
+            #if DEBUG
+            dopPath = $"{Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory))))}\\Assets\\";
+            path = $"{dopPath}HotkeysAudio\\voice1.wav";
+            #else
+            path = $"HotkeysAudio\\voice1.wav";
+            #endif
             switch (CurrentUser.GameHotkeys)
             {
                 case 20:
                     {
                         act = (6, "Ты молодец. Знаешь ли ты, как с помощью клавиатуры скопировать текст?", 2);
-                        path = $"HotkeysAudio\\voice6.wav";
+                        path = $"{dopPath}HotkeysAudio\\voice6.wav";
                         TextShowAct = "2/5";
                     }
                     break;
                 case 40:
                     {
                         act = (9, "Отлично справляешься. Знаешь ли ты, как с помощью клавиатуры вставить скопированный текст?", 2);
-                        path = $"HotkeysAudio\\voice11.wav";
+                        path = $"{dopPath}HotkeysAudio\\voice11.wav";
                         TextShowAct = "3/5";
                     }
                     break;
                 case 60:
                     {
                         act = (12, "Почти конец! Знаешь ли ты, как стереть символ спереди курсора?", 2);
-                        path = $"HotkeysAudio\\voice15.wav";
+                        path = $"{dopPath}HotkeysAudio\\voice15.wav";
                         TextShowAct = "4/5";
                     }
                     break;
                 case 80:
                     {
                         act = (15, "И мой последний вопрос. Знаешь ли ты, как закрыть приложение, в котором ты сейчас находишься, с помощью клавиш?", 2);
-                        path = $"HotkeysAudio\\voice19.wav";
+                        path = $"{dopPath}HotkeysAudio\\voice19.wav";
                         TextShowAct = "5/5";
                     } break;
                 default: act = act = (1, "Изучать программирование - значит уметь выполнять различные действия на компьютере с помощью клавиатуры", 1); break;
@@ -127,14 +136,14 @@ namespace HelloItQuantum.ViewModels
                 case 1:
                     {
                         act = (2, "Готов ли ты проверить свои знания в мире горячих клавиш? Не волнуйся, я тебя научу", 2);
-                        path = $"HotkeysAudio\\voice2.wav";
+                        path = $"{dopPath}HotkeysAudio\\voice2.wav";
                     }; break;
                 case 2:
                     {
                         if (button == "Далее")
                         {
                             act = (3, "Отлично. Начнем с простого вопроса. Знаешь ли ты, как с помощью клавиатуры стирать текст?", 2);
-                            path = $"HotkeysAudio\\voice3.wav";
+                            path = $"{dopPath}HotkeysAudio\\voice3.wav";
                         }
                         else
                         {
@@ -146,14 +155,14 @@ namespace HelloItQuantum.ViewModels
                         if (button == "Далее")
                         {
                             act = (4, "Если говоришь, знаешь, введи название клавиши, с помощью которой можно стереть текст", 3);
-                            path = $"HotkeysAudio\\voice4.wav";
+                            path = $"{dopPath}HotkeysAudio\\voice4.wav";
                         }
                         else
                         {
                             act = (5, "Чтобы стереть текст, который ты написал, необходимо нажать клавишу Backspace. Иногда её изображают стрелочкой влево.", 1);
                             PathSvgHotkey = "/Assets/ImgHotkeys/Backspace.svg";
                             VisibleSvgHotkey = !VisibleSvgHotkey;
-                            path = $"HotkeysAudio\\voice5.wav";
+                            path = $"{dopPath}HotkeysAudio\\voice5.wav";
                         }
                     }; break;
                 case 4:
@@ -163,7 +172,7 @@ namespace HelloItQuantum.ViewModels
                             act = (5, "Чтобы стереть текст, который ты написал, необходимо нажать клавишу Backspace. Иногда её изображают стрелочкой влево.", 1);
                             PathSvgHotkey = "/Assets/ImgHotkeys/Backspace.svg";
                             VisibleSvgHotkey = !VisibleSvgHotkey;
-                            path = $"HotkeysAudio\\voice5.wav";
+                            path = $"{dopPath}HotkeysAudio\\voice5.wav";
                         } 
                         else
                         {
@@ -171,7 +180,7 @@ namespace HelloItQuantum.ViewModels
                             {
                                 WorkWithFile.UpdateValueGameProgress(1, 20, CurrentUser);
                                 act = (6, "Ты молодец. Знаешь ли ты, как с помощью клавиатуры скопировать текст?", 2);
-                                path = $"HotkeysAudio\\voice6.wav";
+                                path = $"{dopPath}HotkeysAudio\\voice6.wav";
                                 TextShowAct = "2/5";
                             }
                             else
@@ -185,28 +194,28 @@ namespace HelloItQuantum.ViewModels
                     {
                         VisibleSvgHotkey = !VisibleSvgHotkey;
                         act = (4, "Введи название клавиши, которую ты узнал, с помощью которой можно стереть текст", 3);
-                        path = $"HotkeysAudio\\voice7.wav";
+                        path = $"{dopPath}HotkeysAudio\\voice7.wav";
                     }; break;
                 case 6:
                     {
                         if (button == "Далее")
                         {
                             act = (8, "Если говоришь, знаешь, введи сочетание клавиш, с помощью которых можно скопировать текст", 3);
-                            path = $"HotkeysAudio\\voice8.wav";
+                            path = $"{dopPath}HotkeysAudio\\voice8.wav";
                         }
                         else
                         {
                             act = (7, "Чтобы с помощью клавиатуры скопировать текст, необходимо использовать сочетание клавиш Ctrl + C.", 1);
                             PathSvgHotkey = "/Assets/ImgHotkeys/CtrlC.svg";
                             VisibleSvgHotkey = !VisibleSvgHotkey;
-                            path = $"HotkeysAudio\\voice9.wav";
+                            path = $"{dopPath}HotkeysAudio\\voice9.wav";
                         }
                     }; break;
                 case 7:
                     {
                         VisibleSvgHotkey = !VisibleSvgHotkey;
                         act = (8, "Если говоришь, знаешь, введи сочетание клавиш, с помощью которых можно скопировать текст", 3);
-                        path = $"HotkeysAudio\\voice10.wav";
+                        path = $"{dopPath}HotkeysAudio\\voice10.wav";
                     }; break;
                 case 8:
                     {
@@ -215,15 +224,15 @@ namespace HelloItQuantum.ViewModels
                             act = (7, "Чтобы с помощью клавиатуры скопировать текст, необходимо использовать сочетание клавиш Ctrl + C.", 1);
                             PathSvgHotkey = "/Assets/ImgHotkeys/CtrlC.svg";
                             VisibleSvgHotkey = !VisibleSvgHotkey;
-                            path = $"HotkeysAudio\\voice9.wav";
+                            path = $"{dopPath}HotkeysAudio\\voice9.wav";
                         }
                         else
                         {
-                            if (TextAnswer.ToLower().Trim() == "ctrl + c" || TextAnswer.ToLower().Trim() == "ctrl c")
+                            if (TextAnswer.ToLower().Trim() == "ctrl + c" || TextAnswer.ToLower().Trim() == "ctrl c" || TextAnswer.ToLower().Trim() == "ctrl+c" || TextAnswer.ToLower().Trim() == "ctrl +c" || TextAnswer.ToLower().Trim() == "ctrl+ c" || TextAnswer.ToLower().Trim() == "ctrlc" || TextAnswer.ToLower().Trim() == "ctrl c")
                             {
                                 WorkWithFile.UpdateValueGameProgress(1, 40, CurrentUser);
                                 act = (9, "Отлично справляешься. Знаешь ли ты, как с помощью клавиатуры вставить скопированный текст?", 2);
-                                path = $"HotkeysAudio\\voice11.wav";
+                                path = $"{dopPath}HotkeysAudio\\voice11.wav";
                                 TextShowAct = "3/5";
                             }
                             else
@@ -238,21 +247,21 @@ namespace HelloItQuantum.ViewModels
                         if (button == "Далее")
                         {
                             act = (11, "Если говоришь, знаешь, введи сочетание клавиш, с помощью которых можно вставить скопированный текст", 3);
-                            path = $"HotkeysAudio\\voice12.wav";
+                            path = $"{dopPath}HotkeysAudio\\voice12.wav";
                         }
                         else
                         {
                             act = (10, "Чтобы с помощью клавиатуры вставить скопированный текст, необходимо использовать сочетание клавиш Ctrl + V.", 1);
                             PathSvgHotkey = "/Assets/ImgHotkeys/CtrlV.svg";
                             VisibleSvgHotkey = !VisibleSvgHotkey;
-                            path = $"HotkeysAudio\\voice13.wav";
+                            path = $"{dopPath}HotkeysAudio\\voice13.wav";
                         }
                     }; break;
                 case 10:
                     {
                         VisibleSvgHotkey = !VisibleSvgHotkey;
                         act = (11, "Введи сочетание клавиш, с помощью которых можно вставить скопированный текст", 3);
-                        path = $"HotkeysAudio\\voice14.wav";
+                        path = $"{dopPath}HotkeysAudio\\voice14.wav";
                     }; break;
                 case 11:
                     {
@@ -261,15 +270,15 @@ namespace HelloItQuantum.ViewModels
                             act = (10, "Чтобы с помощью клавиатуры вставить скопированный текст, необходимо использовать сочетание клавиш Ctrl + V.", 1);
                             PathSvgHotkey = "/Assets/ImgHotkeys/CtrlV.svg";
                             VisibleSvgHotkey = !VisibleSvgHotkey;
-                            path = $"HotkeysAudio\\voice13.wav";
+                            path = $"{dopPath}HotkeysAudio\\voice13.wav";
                         }
                         else
                         {
-                            if (TextAnswer.ToLower().Trim() == "ctrl + v")
+                            if (TextAnswer.ToLower().Trim() == "ctrl + v" || TextAnswer.ToLower().Trim() == "ctrl+v" || TextAnswer.ToLower().Trim() == "ctrl +v" || TextAnswer.ToLower().Trim() == "ctrl+ v" || TextAnswer.ToLower().Trim() == "ctrl v" || TextAnswer.ToLower().Trim() == "ctrlv")
                             {
                                 WorkWithFile.UpdateValueGameProgress(1, 60, CurrentUser);
                                 act = (12, "Почти конец! Знаешь ли ты, как стереть символ спереди курсора?", 2);
-                                path = $"HotkeysAudio\\voice15.wav";
+                                path = $"{dopPath}HotkeysAudio\\voice15.wav";
                                 TextShowAct = "4/5";
                             }
                             else
@@ -284,21 +293,21 @@ namespace HelloItQuantum.ViewModels
                         if (button == "Далее")
                         {
                             act = (14, "Если говоришь, знаешь, введи клавишу, с помощью которой можно стереть текст спереди курсора", 3);
-                            path = $"HotkeysAudio\\voice16.wav";
+                            path = $"{dopPath}HotkeysAudio\\voice16.wav";
                         }
                         else
                         {
                             act = (13, "Курсор - мерцающая линия, которая дает знать, в каком месте сейчас будет изменяться текст. Чтобы стереть символ спереди курсора необходимо нажать клавишу Delete или Del.", 1);
                             PathSvgHotkey = "/Assets/ImgHotkeys/Del.svg";
                             VisibleSvgHotkey = !VisibleSvgHotkey;
-                            path = $"HotkeysAudio\\voice17.wav";
+                            path = $"{dopPath}HotkeysAudio\\voice17.wav";
                         }
                     }; break;
                 case 13:
                     {
                         VisibleSvgHotkey = !VisibleSvgHotkey;
                         act = (14, "Введи клавишу, с помощью которой можно стереть текст спереди курсора", 3);
-                        path = $"HotkeysAudio\\voice18.wav";
+                        path = $"{dopPath}HotkeysAudio\\voice18.wav";
                     }; break;
                 case 14:
                     {
@@ -307,7 +316,7 @@ namespace HelloItQuantum.ViewModels
                             act = (13, "Курсор - мерцающая линия, которая дает знать, в каком месте сейчас будет изменяться текст. Чтобы стереть символ спереди курсора необходимо нажать клавишу Delete или Del.", 1);
                             PathSvgHotkey = "/Assets/ImgHotkeys/Del.svg";
                             VisibleSvgHotkey = !VisibleSvgHotkey;
-                            path = $"HotkeysAudio\\voice17.wav";
+                            path = $"{dopPath}HotkeysAudio\\voice17.wav";
                         }
                         else
                         {
@@ -315,7 +324,7 @@ namespace HelloItQuantum.ViewModels
                             {
                                 WorkWithFile.UpdateValueGameProgress(1, 80, CurrentUser);
                                 act = (15, "И мой последний вопрос. Знаешь ли ты, как закрыть приложение, в котором ты сейчас находишься, с помощью клавиш?", 2);
-                                path = $"HotkeysAudio\\voice19.wav";
+                                path = $"{dopPath}HotkeysAudio\\voice19.wav";
                                 TextShowAct = "5/5";
                             }
                             else
@@ -330,21 +339,21 @@ namespace HelloItQuantum.ViewModels
                         if (button == "Далее")
                         {
                             act = (17, "Если говоришь, знаешь, введи сочетание клавиш, с помощью которых можно закрыть приложение, в котором ты сейчас находишься", 3);
-                            path = $"HotkeysAudio\\voice20.wav";
+                            path = $"{dopPath}HotkeysAudio\\voice20.wav";
                         }
                         else
                         {
                             act = (16, "Чтобы закрыть приложение, в котором ты сейчас находишься, с помощью клавиш, необходимо нажать клавиши Alt + F4.", 1);
                             PathSvgHotkey = "/Assets/ImgHotkeys/AltF4.svg";
                             VisibleSvgHotkey = !VisibleSvgHotkey;
-                            path = $"HotkeysAudio\\voice21.wav";
+                            path = $"{dopPath}HotkeysAudio\\voice21.wav";
                         }
                     }; break;
                 case 16:
                     {
                         VisibleSvgHotkey = !VisibleSvgHotkey;
                         act = (17, "Введи сочетание клавиш, с помощью которых можно закрыть приложение, в котором ты сейчас находишься", 3);
-                        path = $"HotkeysAudio\\voice22.wav";
+                        path = $"{dopPath}HotkeysAudio\\voice22.wav";
                     }; break;
                 case 17:
                     {
@@ -353,15 +362,15 @@ namespace HelloItQuantum.ViewModels
                             act = (16, "Чтобы закрыть приложение, в котором ты сейчас находишься, с помощью клавиш, необходимо нажать клавиши Alt + F4.", 1);
                             PathSvgHotkey = "/Assets/ImgHotkeys/AltF4.svg";
                             VisibleSvgHotkey = !VisibleSvgHotkey;
-                            path = $"HotkeysAudio\\voice21.wav";
+                            path = $"{dopPath}HotkeysAudio\\voice21.wav";
                         }
                         else
                         {
-                            if (TextAnswer.ToLower().Trim() == "alt + f4")
+                            if (TextAnswer.ToLower().Trim() == "alt + f4" || TextAnswer.ToLower().Trim() == "alt+f4" || TextAnswer.ToLower().Trim() == "alt +f4" || TextAnswer.ToLower().Trim() == "alt+ f4")
                             {
                                 WorkWithFile.UpdateValueGameProgress(1, 100, CurrentUser);
                                 act = (18, "Ты молодец и знаешь все базовые горячие клавиши для того, чтобы изучать программирование. Надеюсь это поможет тебе выбрать направление. Пока-пока!", 1);
-                                path = $"HotkeysAudio\\voice23.wav";
+                                path = $"{dopPath}HotkeysAudio\\voice23.wav";
                                 TextInBtnNext = "Выйти";
                             }
                             else
