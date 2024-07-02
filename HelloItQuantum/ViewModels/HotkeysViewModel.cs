@@ -1,7 +1,5 @@
 ﻿using HelloItQuantum.Function;
 using HelloItQuantum.Views;
-using System;
-using System.IO;
 using System.Media;
 
 namespace HelloItQuantum.ViewModels

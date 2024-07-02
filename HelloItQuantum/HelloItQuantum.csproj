@@ -29,12 +29,14 @@
     <None Remove="Assets\icon_create_friend.svg" />
     <None Remove="Assets\icon_labyrinth.svg" />
     <None Remove="Assets\ImgAuth\фонAuth.svg" />
+    <None Remove="Assets\ImgCreateFriend\arrow.png" />
     <None Remove="Assets\ImgCreateFriend\body.svg" />
     <None Remove="Assets\ImgCreateFriend\delete.svg" />
     <None Remove="Assets\ImgCreateFriend\eye.svg" />
     <None Remove="Assets\ImgCreateFriend\foot1.svg" />
     <None Remove="Assets\ImgCreateFriend\foot2.svg" />
     <None Remove="Assets\ImgCreateFriend\no_shift.svg" />
+    <None Remove="Assets\ImgCreateFriend\play_audio.png" />
     <None Remove="Assets\ImgHomeView\logoIT.png" />
     <None Remove="Assets\img_friend.png" />
     <None Remove="Assets\kvanlogo.png" />
@@ -44,6 +46,12 @@
     <None Remove="Assets\КнопкаНазад.png" />
     <None Remove="Assets\Робот.svg" />
     <None Remove="Assets\фон.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\CreateFrendAudio\voice1.wav" />
+    <Content Include="Assets\CreateFrendAudio\voice2.wav" />
+    <Content Include="Assets\CreateFrendAudio\voice3.wav" />
   </ItemGroup>
 
   <ItemGroup>

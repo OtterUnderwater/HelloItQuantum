@@ -73,9 +73,23 @@
 									</DataTemplate>
 								</ItemsControl.ItemTemplate>
 							</ItemsControl>
-	
-							<Button Grid.Row="1" Content="+" Command="{Binding GameCreateFriendVM.ClickCreateElement}"
-									Background="#E6EFD8" Margin="60 0 20 0" HorizontalAlignment="Stretch"/>
+
+							<StackPanel Grid.Row="1" Margin="60 0 20 0" HorizontalAlignment="Stretch">
+								<Button Content="+" Command="{Binding GameCreateFriendVM.ClickCreateElement}"
+								Background="#E6EFD8" HorizontalAlignment="Stretch"/>
+								<Grid ColumnDefinitions="auto, *" HorizontalAlignment="Stretch" Margin="0 10" IsVisible="{Binding GameCreateFriendVM.IsVisibleClue}">
+									<Image Grid.Column="0" Source="/Assets/ImgCreateFriend/arrow.png" Width="100" Margin="0 10 10 0"/>
+									<Border Grid.Column="1" Background="#E6EFD8" CornerRadius="10" BorderThickness="5" BorderBrush="#F26527" Margin="10 10 0 0" Padding="10">
+										<StackPanel HorizontalAlignment="Stretch">
+											<TextBlock Text="Привет! Давай создадим друга для компьютерной пыли! Нажми на кнопку, чтобы создать элемент. Выбери цвет фигуры, управляй положением глаз и ног."
+											   TextWrapping="Wrap"/>
+											<Button Command="{Binding GameCreateFriendVM.PlayTask}" Margin="0 -20 0 0" CornerRadius="100" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+												<Image Source="/Assets/ImgCreateFriend/play_audio.png" Width="50"/>
+											</Button>				
+										</StackPanel>
+									</Border>						
+								</Grid>
+							</StackPanel>
 						</Grid>
 					</ScrollViewer>
 					

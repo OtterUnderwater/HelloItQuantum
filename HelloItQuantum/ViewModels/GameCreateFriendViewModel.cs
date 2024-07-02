@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Media;
+using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Shapes;
@@ -32,15 +34,20 @@ namespace HelloItQuantum.ViewModels
 		bool isVisibleHello = false;
 		public bool IsVisibleHello { get => isVisibleHello; set => SetProperty(ref isVisibleHello, value); }
 
+		bool isVisibleClue = true;
+		public bool IsVisibleClue { get => isVisibleClue; set => SetProperty(ref isVisibleClue, value); }
+
 		string btnContent = "—Œ«ƒ¿“‹";
 		public string BtnContent { get => btnContent; set => SetProperty(ref btnContent, value); }
 
 		SolidColorBrush btnColor = new SolidColorBrush(Color.Parse("#7CBE41"));
 		public SolidColorBrush BtnColor { get => btnColor; set => SetProperty(ref btnColor, value); }
+
 		#endregion
 
 		public void ClickCreateElement()
 		{
+			IsVisibleClue = false;
 			FriendElement friendElement = new FriendElement();
 			ObservableCollection<Ellipse> lColors = new ObservableCollection<Ellipse>();
 			ObservableCollection<ComboBoxItem> lElements = new ObservableCollection<ComboBoxItem>();
@@ -77,14 +84,36 @@ namespace HelloItQuantum.ViewModels
 				IsVisibleHello = true;
 				BtnContent = "«¿ÕŒ¬Œ";
 				BtnColor = new SolidColorBrush(Color.Parse("#F26527"));
+				PlayTwoAudio();
 			}
 			else if (btnContent == "«¿ÕŒ¬Œ")
 			{
+				IsVisibleClue = true;
 				IsVisibleHello = false;
 				BtnContent = "—Œ«ƒ¿“‹";
 				BtnColor = new SolidColorBrush(Color.Parse("#7CBE41"));
 				PChildrens.Children.Clear();
 				ListElements.Clear();
+			}
+		}
+
+		public void PlayTask()
+		{
+			PlayVoice($"CreateFrendAudio/voice1.wav");
+		}
+
+		public async Task PlayTwoAudio()
+		{
+			await PlayVoice($"CreateFrendAudio/voice2.wav");
+			await PlayVoice($"CreateFrendAudio/voice3.wav");
+		}
+
+		public async Task PlayVoice(string path)
+		{
+			using (SoundPlayer snd = new SoundPlayer(path))
+			{
+				snd.Play();
+				await Task.Delay(2000);
 			}
 		}
 
