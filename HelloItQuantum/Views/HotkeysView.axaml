@@ -6,7 +6,7 @@
              x:Class="HelloItQuantum.Views.HotkeysView"
 			 x:DataType="vm:MainWindowViewModel"
 			 xmlns:vm="using:HelloItQuantum.ViewModels"
-			 Background="#CCD7EB" >
+			 Background="#CCD7EB">
 
 	<UserControl.Styles>
 		<Style Selector="TextBlock">

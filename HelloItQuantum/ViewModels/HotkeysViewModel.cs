@@ -178,7 +178,7 @@ namespace HelloItQuantum.ViewModels
                         {
                             if (TextAnswer.ToLower().Trim() == "backspace" || TextAnswer.ToLower().Trim() == "←" || TextAnswer.ToLower().Trim() == "<-")
                             {
-                                WorkWithFile.UpdateValueGameProgress(1, 20, CurrentUser);
+                                CurrentUser.GameHotkeys = 20;
                                 act = (6, "Ты молодец. Знаешь ли ты, как с помощью клавиатуры скопировать текст?", 2);
                                 path = $"{dopPath}HotkeysAudio\\voice6.wav";
                                 TextShowAct = "2/5";
@@ -230,8 +230,8 @@ namespace HelloItQuantum.ViewModels
                         {
                             if (TextAnswer.ToLower().Trim() == "ctrl + c" || TextAnswer.ToLower().Trim() == "ctrl c" || TextAnswer.ToLower().Trim() == "ctrl+c" || TextAnswer.ToLower().Trim() == "ctrl +c" || TextAnswer.ToLower().Trim() == "ctrl+ c" || TextAnswer.ToLower().Trim() == "ctrlc" || TextAnswer.ToLower().Trim() == "ctrl c")
                             {
-                                WorkWithFile.UpdateValueGameProgress(1, 40, CurrentUser);
-                                act = (9, "Отлично справляешься. Знаешь ли ты, как с помощью клавиатуры вставить скопированный текст?", 2);
+								CurrentUser.GameHotkeys = 40;
+								act = (9, "Отлично справляешься. Знаешь ли ты, как с помощью клавиатуры вставить скопированный текст?", 2);
                                 path = $"{dopPath}HotkeysAudio\\voice11.wav";
                                 TextShowAct = "3/5";
                             }
@@ -276,8 +276,8 @@ namespace HelloItQuantum.ViewModels
                         {
                             if (TextAnswer.ToLower().Trim() == "ctrl + v" || TextAnswer.ToLower().Trim() == "ctrl+v" || TextAnswer.ToLower().Trim() == "ctrl +v" || TextAnswer.ToLower().Trim() == "ctrl+ v" || TextAnswer.ToLower().Trim() == "ctrl v" || TextAnswer.ToLower().Trim() == "ctrlv")
                             {
-                                WorkWithFile.UpdateValueGameProgress(1, 60, CurrentUser);
-                                act = (12, "Почти конец! Знаешь ли ты, как стереть символ спереди курсора?", 2);
+								CurrentUser.GameHotkeys = 60;
+								act = (12, "Почти конец! Знаешь ли ты, как стереть символ спереди курсора?", 2);
                                 path = $"{dopPath}HotkeysAudio\\voice15.wav";
                                 TextShowAct = "4/5";
                             }
@@ -322,8 +322,8 @@ namespace HelloItQuantum.ViewModels
                         {
                             if (TextAnswer.ToLower().Trim() == "delete" || TextAnswer.ToLower().Trim() == "del")
                             {
-                                WorkWithFile.UpdateValueGameProgress(1, 80, CurrentUser);
-                                act = (15, "И мой последний вопрос. Знаешь ли ты, как закрыть приложение, в котором ты сейчас находишься, с помощью клавиш?", 2);
+								CurrentUser.GameHotkeys = 80;
+								act = (15, "И мой последний вопрос. Знаешь ли ты, как закрыть приложение, в котором ты сейчас находишься, с помощью клавиш?", 2);
                                 path = $"{dopPath}HotkeysAudio\\voice19.wav";
                                 TextShowAct = "5/5";
                             }
@@ -368,8 +368,8 @@ namespace HelloItQuantum.ViewModels
                         {
                             if (TextAnswer.ToLower().Trim() == "alt + f4" || TextAnswer.ToLower().Trim() == "alt+f4" || TextAnswer.ToLower().Trim() == "alt +f4" || TextAnswer.ToLower().Trim() == "alt+ f4")
                             {
-                                WorkWithFile.UpdateValueGameProgress(1, 100, CurrentUser);
-                                act = (18, "Ты молодец и знаешь все базовые горячие клавиши для того, чтобы изучать программирование. Надеюсь это поможет тебе выбрать направление. Пока-пока!", 1);
+								CurrentUser.GameHotkeys = 100;
+								act = (18, "Ты молодец и знаешь все базовые горячие клавиши для того, чтобы изучать программирование. Надеюсь это поможет тебе выбрать направление. Пока-пока!", 1);
                                 path = $"{dopPath}HotkeysAudio\\voice23.wav";
                                 TextInBtnNext = "Выйти";
                             }

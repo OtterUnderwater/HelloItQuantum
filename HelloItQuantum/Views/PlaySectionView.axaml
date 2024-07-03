@@ -5,7 +5,8 @@
              mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="650"
 			 x:Class="HelloItQuantum.Views.PlaySectionView"
 			 x:DataType="vm:MainWindowViewModel"
-			 xmlns:vm="using:HelloItQuantum.ViewModels">
+			 xmlns:vm="using:HelloItQuantum.ViewModels"
+			 Background="#B4E3F0">
 
 	<UserControl.Styles>
 		<Style Selector="TextBlock">
@@ -13,7 +14,7 @@
 		</Style>
 	</UserControl.Styles>
 
-	<Panel Background="#C8FFF5">
+	<Panel>
 		<StackPanel HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Stretch">
 
 			<Grid ColumnDefinitions="Auto, *" RowDefinitions="*">

@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
 using HelloItQuantum.Views;
-using ReactiveUI;
 
 namespace HelloItQuantum.ViewModels
 {

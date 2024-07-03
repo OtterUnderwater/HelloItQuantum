@@ -32,10 +32,6 @@
 
 	<StackPanel>
 
-
-		<!---->
-		
-
 		<Grid Height="{Binding $parent[StackPanel].Bounds.Height}" ColumnDefinitions="*,*,2*" RowDefinitions="*">
 
 			<Border  Background="#F26527" CornerRadius="15"

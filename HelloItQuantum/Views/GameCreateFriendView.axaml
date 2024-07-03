@@ -83,9 +83,9 @@
 										<StackPanel HorizontalAlignment="Stretch">
 											<TextBlock Text="Привет! Давай создадим друга для компьютерной пыли! Нажми на кнопку, чтобы создать элемент. Выбери цвет фигуры, управляй положением глаз и ног."
 											   TextWrapping="Wrap"/>
-											<Button Command="{Binding GameCreateFriendVM.PlayTask}" Margin="0 -20 0 0" CornerRadius="100" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-												<Image Source="/Assets/ImgCreateFriend/play_audio.png" Width="50"/>
-											</Button>				
+											<Button Command="{Binding GameCreateFriendVM.PlayTask}" Margin="0 -20 0 0" CornerRadius="10000" HorizontalAlignment="Right" VerticalAlignment="Bottom" Padding="1">												
+													<Image Source="/Assets/ImgCreateFriend/play_audio.png" Width="50"/>
+											</Button>
 										</StackPanel>
 									</Border>						
 								</Grid>

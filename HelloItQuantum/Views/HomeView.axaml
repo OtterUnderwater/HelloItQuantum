@@ -5,12 +5,13 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="HelloItQuantum.Views.HomeView"
 			 x:DataType="vm:MainWindowViewModel"
-			 xmlns:vm="using:HelloItQuantum.ViewModels">
+			 xmlns:vm="using:HelloItQuantum.ViewModels"
+			 Background="#B4E3F0">
 	
 	<UserControl.Styles>
 		<Style Selector="Button">
 			<Setter Property="FontFamily" Value="{StaticResource BankGothicMediumRUS}"/>
-			<Setter Property="FontSize" Value="40"/>
+			<Setter Property="FontSize" Value="50"/>
 			<Setter Property="Foreground" Value="White"/>
 			<Setter Property="CornerRadius" Value="20"/>
 			<Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -20,22 +21,27 @@
 		</Style>
 	</UserControl.Styles>
 
-	<Panel>
-		<Image Source="/Assets/ImgHomeView/bg.png" Stretch="Fill"/>
-		<Grid ColumnDefinitions="1*,3*,1*,3*,1*" RowDefinitions="1*,6*,20,5*,20,3*,*" Height="{Binding $parent[Panel].Bounds.Height}">
-			<StackPanel Grid.Column="1" Grid.RowSpan="7" VerticalAlignment="Center" HorizontalAlignment="Stretch">
-				<Image Source="/Assets/ImgHomeView/logoIT.png" MaxWidth="600"/>
-			</StackPanel>
-			<Border Grid.Column="3" Grid.Row="1" CornerRadius="20" Background="#006838" BoxShadow="0 5 #013E21" HorizontalAlignment="Stretch">
-				<Button Content="Играть" Command="{Binding HomeVM.ClickPlay}" CornerRadius="20"/>
-			</Border>
-			<Border Grid.Column="3" Grid.Row="3" CornerRadius="20" Background="#F26527" BoxShadow="0 5 #753417" HorizontalAlignment="Stretch">
-				<Button Content="Прогресс" Command="{Binding HomeVM.ClickStatistic}" CornerRadius="20"/>
-			</Border>
-			<Border Grid.Column="3" Grid.Row="5" CornerRadius="20" Background="#B21E22" BoxShadow="0 5 #470C0D" HorizontalAlignment="Stretch">
-				<Button Content="Выйти" Command="{Binding HomeVM.ClickExit}" CornerRadius="20"/>
-			</Border>
+	<StackPanel>
+		<Grid ColumnDefinitions="Auto, 8*" Height="{Binding $parent[StackPanel].Bounds.Height}">
+			<Panel Grid.Column="0" VerticalAlignment="Stretch">
+				<Image Source="/Assets/ImgAuth/фонAuth.png" Height="{Binding $parent[Grid].Bounds.Height}" HorizontalAlignment="Left"/>
+				<Grid RowDefinitions="4*, 8*, 4*" ColumnDefinitions="2*, 8*, 5*">
+					<Svg Grid.Row="1"  Grid.Column="1"
+						Path="/Assets/ImgAuth/ItKvantumLogoAuth.svg" HorizontalAlignment="Center" Margin="0 0 160 0"/>
+				</Grid>
+			</Panel>
+			<Grid Grid.Column="1" ColumnDefinitions="12*, 1*" RowDefinitions="3*,6*,5*,3*,3*">
+				<Border Grid.Row="1" Grid.Column="0" Margin="0 10" CornerRadius="20" Background="#006838" BoxShadow="0 5 #013E21" HorizontalAlignment="Stretch">
+					<Button Content="Играть" Command="{Binding HomeVM.ClickPlay}" CornerRadius="20"/>
+				</Border>
+				<Border Grid.Row="2" Grid.Column="0" Margin="0 10" CornerRadius="20" Background="#F26527" BoxShadow="0 5 #753417" HorizontalAlignment="Stretch">
+					<Button Content="Прогресс" Command="{Binding HomeVM.ClickStatistic}" CornerRadius="20"/>
+				</Border>
+				<Border Grid.Row="3" Grid.Column="0" Margin="0 10" CornerRadius="20" Background="#B21E22" BoxShadow="0 5 #470C0D" HorizontalAlignment="Stretch">
+					<Button Content="Выйти" Command="{Binding HomeVM.ClickExit}" CornerRadius="20"/>
+				</Border>
+			</Grid>		
 		</Grid>
-	</Panel>
+	</StackPanel>
 	
 </UserControl>

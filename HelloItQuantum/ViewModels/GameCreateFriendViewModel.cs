@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Media;
 using System.Threading.Tasks;
 using Avalonia;
@@ -16,6 +17,8 @@ namespace HelloItQuantum.ViewModels
 {
 	public class GameCreateFriendViewModel : MainWindowViewModel
 	{
+		string dopPath = "";
+
 		Dictionary<int, Color> keyValueColor = new Dictionary<int, Color>
 		{
 			{ 0, Color.Parse("#0036A0") },
@@ -45,6 +48,14 @@ namespace HelloItQuantum.ViewModels
 		public SolidColorBrush BtnColor { get => btnColor; set => SetProperty(ref btnColor, value); }
 
 		#endregion
+		public GameCreateFriendViewModel()
+		{
+			#if DEBUG
+			dopPath = $"{System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory))))}\\Assets\\";
+			#else
+            dopPath = "";
+			#endif
+		}
 
 		public void ClickCreateElement()
 		{
@@ -81,7 +92,7 @@ namespace HelloItQuantum.ViewModels
 		{
 			if (btnContent == "—Œ«ƒ¿“‹" && PChildrens.Children.Count > 1)
 			{
-				WorkWithFile.UpdateValueGameProgress(3, 100, CurrentUser);
+				CurrentUser.GameCreateFriend = 100;
 				IsVisibleHello = true;
 				BtnContent = "«¿ÕŒ¬Œ";
 				BtnColor = new SolidColorBrush(Color.Parse("#F26527"));
@@ -100,22 +111,13 @@ namespace HelloItQuantum.ViewModels
 
 		public void PlayTask()
 		{
-			#if DEBUG
-			PlayVoice($"Assets/CreateFrendAudio/voice1.wav");
-			#else
-			PlayVoice($"CreateFrendAudio/voice1.wav");
-			#endif
+			PlayVoice($"{dopPath}CreateFrendAudio/voice1.wav");
 		}
 
 		public async Task PlayTwoAudio()
 		{
-			#if DEBUG
-			await PlayVoice($"Assets/CreateFrendAudio/voice2.wav");
-			await PlayVoice($"Assets/CreateFrendAudio/voice3.wav");
-			#else
-			await PlayVoice($"CreateFrendAudio/voice2.wav");
-			await PlayVoice($"CreateFrendAudio/voice3.wav");
-			#endif
+			await PlayVoice($"{dopPath}CreateFrendAudio/voice2.wav");
+			await PlayVoice($"{dopPath}CreateFrendAudio/voice3.wav");
 		}
 
 		public async Task PlayVoice(string path)

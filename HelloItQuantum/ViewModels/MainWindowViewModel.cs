@@ -8,14 +8,8 @@ namespace HelloItQuantum.ViewModels
 		static HomeViewModel homeVM = new HomeViewModel();
 		public static HomeViewModel HomeVM { get => homeVM; set => homeVM = value; }
 
-        static AuthViewModel authVM = new AuthViewModel();
-        public static AuthViewModel AuthVM { get => authVM; set => authVM = value; }
-
         static ProgressViewModel progressVM;
         public static ProgressViewModel ProgressVM { get => progressVM; set => progressVM = value; }
-
-        static CreateProfileViewModel createProfileVM = new CreateProfileViewModel();
-        public static CreateProfileViewModel CreateProfileVM { get => createProfileVM; set => createProfileVM = value; }
 
         static PlaySectionViewModel? playSectionVM;
 		public static PlaySectionViewModel PlaySectionVM { get => playSectionVM; set => playSectionVM = value; }
@@ -29,7 +23,7 @@ namespace HelloItQuantum.ViewModels
         static LabyrinthViewModel labyrinthVM = new LabyrinthViewModel();
 		public static LabyrinthViewModel LabyrinthVM { get => labyrinthVM; set => labyrinthVM = value; }
 
-        static User currentUser;
+        static User currentUser = new User();
         public static User CurrentUser { get => currentUser; set => currentUser = value; }
         #endregion
     }

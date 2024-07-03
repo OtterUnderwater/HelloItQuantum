@@ -1,3 +1,5 @@
+using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 using HelloItQuantum.Views;
 
 namespace HelloItQuantum.ViewModels
@@ -18,12 +20,9 @@ namespace HelloItQuantum.ViewModels
 
 		public void ClickExit()
 		{
-            AuthVM = new AuthViewModel();
-            PageSwitch.View = new AuthView();
-            /* //Это код для закрытия программы
-             * Window window = (App.Current.ApplicationLifetime as IClassicDesktopStyleApplicationLifetime)?.MainWindow;
+			Window window = (App.Current.ApplicationLifetime as IClassicDesktopStyleApplicationLifetime)?.MainWindow;
 			if (window != null)
-				window.Close();*/
-        }
+				window.Close();
+		}
 	}
 }

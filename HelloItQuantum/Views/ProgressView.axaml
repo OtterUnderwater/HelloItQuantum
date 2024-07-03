@@ -6,7 +6,7 @@
              x:Class="HelloItQuantum.Views.ProgressView"
 			 x:DataType="vm:MainWindowViewModel"
 			 xmlns:vm="using:HelloItQuantum.ViewModels"
-			 Background="#CCD7EB">
+			 Background="#B4E3F0">
 	
 	<UserControl.Styles>
 		<Style Selector="TextBlock">

@@ -6,6 +6,7 @@
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+	<ApplicationIcon>Assets\icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -40,6 +41,9 @@
     <None Remove="Assets\ImgHomeView\logoIT.png" />
     <None Remove="Assets\img_friend.png" />
     <None Remove="Assets\kvanlogo.png" />
+    <None Remove="Assets\LabyrinthAudio\voice_loss.wav" />
+    <None Remove="Assets\LabyrinthAudio\voice_start.wav" />
+    <None Remove="Assets\LabyrinthAudio\voice_win.wav" />
     <None Remove="Assets\Диалоговое_окно.svg" />
     <None Remove="Assets\КнопкаPlay.png" />
     <None Remove="Assets\КнопкаPlay.svg" />
